@@ -15,7 +15,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectID: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGE_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
@@ -126,7 +126,7 @@ function ChatMessage(props) {
       <div className={`message ${messageClass}`}>
         <img
           src={
-            photoURL || "https://api.adorable.io/avatars/23/abott@adorable.png"
+            photoURL || "https://cdn-icons-png.flaticon.com/512/924/924915.png"
           }
           alt="profile-pic"
         />
