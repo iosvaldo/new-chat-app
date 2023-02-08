@@ -34,12 +34,10 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Developer Chat Messager 💬</h1>
+        <h1>Developer Chat Messenger 💬</h1>
         <SignOut />
       </header>
-      <section>
-        {user ? <ChatRoom /> : <SignIn />}
-      </section>
+      <section>{user ? <ChatRoom /> : <SignIn />}</section>
     </div>
   );
 }
@@ -49,13 +47,14 @@ function SignIn() {
   const signInWithGoogle = () => { 
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
+    
   }
 
   return (
     <>
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
+      <button className="google_btn" onClick={signInWithGoogle}>Sign in with Google</button>
       <p>
-        Do not violate the community guidelines or you will be banned for life!
+        Disclaimer: Do not violate the community guidelines or you will be banned for life!
       </p>
     </>
   );
@@ -69,7 +68,8 @@ function SignOut() {
 
 
 function ChatRoom() {
-const dummy = useRef();
+  const dummy = useRef();
+  
   const messageRef = firestore.collection("messages");
   const query = messageRef.orderBy('createdAt').limit(25);
 
@@ -102,11 +102,12 @@ const dummy = useRef();
       </main>
 
       <form onSubmit={sendMessage}>
+       
         <input
           type="text"
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
-          placeholder=" text a message..."
+          placeholder=" type a message..."
         />
         <button type="submit" disabled={!formValue}>
           <FiSend />
