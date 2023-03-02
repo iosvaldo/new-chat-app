@@ -1,6 +1,8 @@
 import './App.css';
 import React, { useRef, useState } from "react";
 
+// import md5 from "md5";
+import Avatar from "react-avatar";
 
 import { FiSend } from "react-icons/fi";
 
@@ -119,19 +121,13 @@ function ChatRoom() {
 
 
 function ChatMessage({ message: { text, uid, photoURL } }) {
-  // const { text, uid, photoURL } = props.message;
-
   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
   return (
     <>
       <div className={`message ${messageClass}`}>
         <img
-          src={
-            photoURL ||
-            "https://i.pinimg.com/originals/57/2c/9d/572c9d839e54c4e5dce7440fb1eda2e5.jpg"
-          }
+          src={`https://robohash.org/${uid}?set=set3` || photoURL}
           alt="profile-pic"
-         
         />
         <p>{text}</p>
       </div>
