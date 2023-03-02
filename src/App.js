@@ -1,8 +1,6 @@
 import './App.css';
 import React, { useRef, useState } from "react";
 
-// import md5 from "md5";
-import Avatar from "react-avatar";
 
 import { FiSend } from "react-icons/fi";
 
