@@ -118,18 +118,20 @@ function ChatRoom() {
 }
 
 
-function ChatMessage(props) {
-  const { text, uid, photoURL } = props.message;
-  
-  const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+function ChatMessage({ message: { text, uid, photoURL } }) {
+  // const { text, uid, photoURL } = props.message;
+
+  const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
   return (
     <>
       <div className={`message ${messageClass}`}>
         <img
           src={
-            photoURL || "https://cdn-icons-png.flaticon.com/512/924/924915.png"
+            photoURL ||
+            "https://i.pinimg.com/originals/57/2c/9d/572c9d839e54c4e5dce7440fb1eda2e5.jpg"
           }
           alt="profile-pic"
+         
         />
         <p>{text}</p>
       </div>
