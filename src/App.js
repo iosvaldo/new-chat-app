@@ -1,16 +1,14 @@
-import './App.css';
+import "./App.css";
 import React, { useRef, useState } from "react";
-
-
 import { FiSend } from "react-icons/fi";
-
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-// import "firebase/compat/analytics";
-
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { FcGoogle } from 'react-icons/fc'
+import { GoSignOut } from "react-icons/go";
+import fire_chat from "./assets/chat_app_icon.png";
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -19,17 +17,14 @@ firebase.initializeApp({
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGE_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId:process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 });
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
-// const analytics = firebase.analytics();
 
 function App() {
-
   const [user] = useAuthState(auth);
-
 
   return (
     <div className="App">
@@ -43,39 +38,50 @@ function App() {
 }
 
 function SignIn() {
-
-  const signInWithGoogle = () => { 
+  const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
-    
-  }
+  };
 
   return (
     <>
-      <button className="google_btn" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p>
-        Disclaimer: Do not violate the community guidelines or you will be banned for life!
+      <div className="app_icon">
+        <img src={fire_chat} alt="app_icon" />
+      </div>
+      <div className="google_container">
+        <button className="google_btn" onClick={signInWithGoogle}>
+          Sign in <FcGoogle className="google_icon" />
+        </button>
+      </div>
+      <p className="disclaim">
+        <strong> Disclaimer:</strong> Please be mindful of the community
+        guidelines while using this chat application. We want to ensure that
+        everyone can have a pleasant experience in our shared chatroom. Let's
+        keep the conversations respectful and friendly for all.
       </p>
     </>
   );
 }
 
 function SignOut() {
-  return auth.currentUser && (
-    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
-  )
+  return (
+    auth.currentUser && (
+      <button className="sign-out" onClick={() => auth.signOut()}>
+        Sign Out <GoSignOut className="signout_icon" />
+      </button>
+    )
+  );
 }
-
 
 function ChatRoom() {
   const dummy = useRef();
-  
+
   const messageRef = firestore.collection("messages");
-  const query = messageRef.orderBy('createdAt').limit(25);
+  const query = messageRef.orderBy("createdAt").limit(25);
 
-  const [messages] = useCollectionData(query, { idField: 'id' });
+  const [messages] = useCollectionData(query, { idField: "id" });
 
-  const [formValue, setFormValue] = useState('');
+  const [formValue, setFormValue] = useState("");
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -86,12 +92,12 @@ function ChatRoom() {
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
-      photoURL
-    })
+      photoURL,
+    });
 
-    setFormValue('');
+    setFormValue("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
-  }
+  };
 
   return (
     <>
@@ -102,7 +108,6 @@ function ChatRoom() {
       </main>
 
       <form onSubmit={sendMessage}>
-       
         <input
           type="text"
           value={formValue}
@@ -116,7 +121,6 @@ function ChatRoom() {
     </>
   );
 }
-
 
 function ChatMessage({ message: { text, uid, photoURL } }) {
   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
@@ -132,7 +136,5 @@ function ChatMessage({ message: { text, uid, photoURL } }) {
     </>
   );
 }
-
-
 
 export default App;
