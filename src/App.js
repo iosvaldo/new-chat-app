@@ -8,7 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { FcGoogle } from 'react-icons/fc'
 import { GoSignOut } from "react-icons/go";
-import fire_chat from "./assets/chat_app_icon.png";
+import fire_chat from "./assets/fire_chat_icon.png";
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,

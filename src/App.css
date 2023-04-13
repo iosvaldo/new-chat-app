@@ -58,8 +58,8 @@ html {
 
 .app_icon img {
   z-index: 1000;
-  height: 200px;
-  width: 200px;
+  height: 12rem;
+  width: 12rem;
   display: flex;
   box-shadow: 2px 2px 12px 2px #181717;
 }
@@ -264,7 +264,7 @@ h1 {
 img {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 40%;
   margin: 2px 5px;
 }
 
@@ -298,4 +298,12 @@ img {
   .disclaim {
     font-size: 0.8em;
   }
+
+ .app_icon img {
+  z-index: 1000;
+  height: 8rem;
+  width:8rem;
+  display: flex;
+  box-shadow: 2px 2px 12px 2px #181717;
+}
 }
