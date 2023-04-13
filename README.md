@@ -1,4 +1,10 @@
-# Welcome to fire Chat App
+# Welcome to fire Chat App <img src="src/assets/fire_chat_icon.png" width="5%" alt="logo" style="display:inline"/>
+
+
+
+### To start the app locally run the command  `npm start` or visit the deployed app here: https://new-chat-app-iosvaldo.vercel.app/
+
+<hr>
 
 ## Getting Started with Create React App
 
