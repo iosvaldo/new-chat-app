@@ -1,5 +1,8 @@
 # Welcome to fire Chat App <img src="src/assets/fire_chat_icon.png" width="5%" alt="logo" style="display:inline"/>
 
+## About 
+
+This chat app is simple and interactive, a seamless and secure user experience built on the latest technologies. You'll always catch a beat with React for lightning-fast updates and Firebase for real-time messaging. And with seamless Google Auth, sign-in is a breeze. Say hello to fast, efficient, and secure messaging. Try it out today!
 
 
 ### To start the app locally run the command  `npm start` or visit the deployed app here: https://new-chat-app-iosvaldo.vercel.app/
