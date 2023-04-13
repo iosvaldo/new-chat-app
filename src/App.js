@@ -128,7 +128,7 @@ function ChatMessage({ message: { text, uid, photoURL } }) {
     <>
       <div className={`message ${messageClass}`}>
         <img
-          src={`https://robohash.org/${uid}?set=set3` || photoURL}
+          src={photoURL || `https://robohash.org/${uid}?set=set3`}
           alt="profile-pic"
         />
         <p>{text}</p>
